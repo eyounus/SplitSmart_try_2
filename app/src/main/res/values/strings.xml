@@ -12,4 +12,5 @@
     <string name="groups">Groups</string>
     <string name="enter_username">enter username</string>
     <string name="enter_password">enter password</string>
+    <string name="create_new_expense">create new expense</string>
 </resources>
