@@ -1,7 +1,6 @@
-/*import java.util.*;
+import java.util.*;
 
 class User {
-    private final boolean allowEmailNotifications;
     private int userId;
     private String username;
     private String email;
@@ -103,14 +102,29 @@ class BalanceTracker {
     }
 }
 
-class PaymentTracker {
-    public void recordPayment(User payer, User payee, double amount) {
-        // Implementation to record the payment and update the balances
-        balanceTracker = new BalanceTracker;
+public class PaymentTracker {
+    private double amount;
+    private double balance;
 
-
+    public PaymentTracker(double amount, double balance) {
+        this.amount = amount;
+        this.balance = balance;
     }
+    public double getAmount() {
+        return amount;
+    }
+    public double getBalance() {
+        return balance;
+    }
+    public void recordPayment() {
+        balance -= amount;
+    }
+    // Implementation to record the payment and update the balances
+
+
+
 }
+
 
 class ExpenseReport {
     public void generateExpenseReport(User user, Date startDate, Date endDate) {
@@ -238,8 +252,8 @@ class SplitSmartApp implements ExpenseApproval {
             String expenseSharedManner = "equal";
 
             int numUsers = 0;
-            System.out.print("Number of users: ");
-            numUsers = Integer.parseInt(scanner.nextLine());
+            System.out.print("Number of users: ")
+            numUsers = scanner.nextLine();
             // Figure out how to add the users to the list
             List<User> involvedUsers = new List<User>;
             for (int i = 0; i < numUsers; i++)
@@ -259,5 +273,3 @@ class SplitSmartApp implements ExpenseApproval {
         }
     }
 }
-
- */
