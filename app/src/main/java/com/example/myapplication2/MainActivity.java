@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     Button btn;
-    FloatingActionButton fbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fbtn = (FloatingActionButton)findViewById(R.id.floatingActionButton);
+        FloatingActionButton fbtn = (FloatingActionButton)findViewById(R.id.floatingActionButton);
         fbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
