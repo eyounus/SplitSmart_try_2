@@ -8,20 +8,20 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class report extends AppCompatActivity {
+public class NewExpense extends AppCompatActivity {
 
+    FloatingActionButton fbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_new_expense);
 
-        FloatingActionButton fbtn ;
-                fbtn = (FloatingActionButton)findViewById(R.id.floatingActionButton2);
+        fbtn = (FloatingActionButton)findViewById(R.id.floatingActionButton3);
         fbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(report.this, MainActivity.class));
+                startActivity(new Intent(NewExpense.this, MainActivity.class));
             }
         });
     }

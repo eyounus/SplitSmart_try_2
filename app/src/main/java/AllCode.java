@@ -1,10 +1,12 @@
-import java.util.*;
+ import java.util.*;
 
 class User {
     private int userId;
     private String username;
     private String email;
     private String password;
+
+    private boolean allowEmailNotifications;
 
     public User(int userId, String username, String email, String password) {
         this.userId = userId;
@@ -20,7 +22,7 @@ class User {
     public void setAllowEmailNotifications(boolean allowEmailNotifications) {
         this.allowEmailNotifications = allowEmailNotifications;
     }
-}
+
 
     public String getUsername() {
         return username;
@@ -102,7 +104,7 @@ class BalanceTracker {
     }
 }
 
-public class PaymentTracker {
+/* public class PaymentTracker {
     private double amount;
     private double balance;
 
@@ -123,7 +125,7 @@ public class PaymentTracker {
 
 
 
-}
+} */
 
 
 class ExpenseReport {
@@ -143,16 +145,19 @@ class SplitSmartApp implements ExpenseApproval {
     private ExpenseReport expenseReport;
     private User loggedInUser;
 
+    private int nextUserId;
+
     public SplitSmartApp() {
         users = new ArrayList<>();
         groups = new ArrayList<>();
         expenses = new ArrayList<>();
         notificationService = new NotificationService();
         balanceTracker = new BalanceTracker();
-        paymentTracker = new PaymentTracker();
+        paymentTracker = new PaymentTracker(0.0 , 0.0);
         expenseReport = new ExpenseReport();
         nextUserId = 1;
     }
+
     public void signUp(String username, String email, String password) {
         // Perform validation and create a new user object
         User newUser = new User(nextUserId++, username, email, password);
@@ -172,14 +177,13 @@ class SplitSmartApp implements ExpenseApproval {
 
     // Method to handle group creation
     public void createGroup(String groupName, List<User> members) {
-        Group newGroup = new Group(groupName, members);
+        Group newGroup = new Group(1,groupName, members);
         groups.add(newGroup);
     }
 
     // Method to handle expense creation
-    public void createExpense(String description, double amount, Date date, String sharedManner, List<User> involvedUsers, String receiptImage)
-    {
-        Expense newExpense = new Expense(description, amount, date, sharedManner, involvedUsers, receiptImage);
+    public void createExpense(String description, double amount, Date date, String sharedManner, List<User> involvedUsers, String receiptImage) {
+        Expense newExpense = new Expense(1,description, amount, date, sharedManner, involvedUsers, receiptImage);
         expenses.add(newExpense);
         balanceTracker.updateBalance(newExpense);
     }
@@ -195,18 +199,22 @@ class SplitSmartApp implements ExpenseApproval {
         // Implementation to reject the expense
         System.out.print("Expense rejected!");
     }
-}
+
     private boolean isValidUsernameAndPassword(String username, String password) {
         return true;
     }
+
     private boolean isValidGroup(String groupName, List<User> members) {
         return true;
     }
-    private boolean isValidExpense(String description, double amount, Date date, String sharedManner, List<User> involvedUsers, String receiptImage)
-    {
+
+    private boolean isValidExpense(String description, double amount, Date date, String sharedManner, List<User> involvedUsers, String receiptImage) {
         return true;
     }
 
+}
+
+class main {
     public static void main(String[] args) {
         SplitSmartApp splitSmartApp = new SplitSmartApp();
         Scanner scanner = new Scanner(System.in);
@@ -234,7 +242,7 @@ class SplitSmartApp implements ExpenseApproval {
             System.out.print("Group members: ");
             // how will the user select group members to be added?
 
-            Group newGroup = new Group();
+       //     Group newGroup = new Group();
 
             // End: New Group
 
@@ -243,8 +251,8 @@ class SplitSmartApp implements ExpenseApproval {
             System.out.print("Expense description: ");
             String expenseDesc = scanner.nextLine();
 
-            System.out.print("Expense amount: ")
-            double expenseAmount = scanner.nextLine();
+            System.out.print("Expense amount: ");
+            double expenseAmount = scanner.nextDouble();
 
             Date expenseDate = new Date();
 
@@ -252,15 +260,15 @@ class SplitSmartApp implements ExpenseApproval {
             String expenseSharedManner = "equal";
 
             int numUsers = 0;
-            System.out.print("Number of users: ")
-            numUsers = scanner.nextLine();
+            System.out.print("Number of users: ");
+          //  numUsers = scanner.nextLine();
             // Figure out how to add the users to the list
-            List<User> involvedUsers = new List<User>;
+            List<User> involvedUsers = new ArrayList<User>();
             for (int i = 0; i < numUsers; i++)
             {
-                involvedUsers.add();
-                System.out.print("Name of user " (i + 1));
-                involvedUsers[i].username = scanner.nextLine();
+             //   involvedUsers.add();
+                System.out.print("Name of user ");
+             //   involvedUsers[i].username = scanner.nextLine();
             }
 
             String expenseReceiptImage = "";
@@ -273,3 +281,5 @@ class SplitSmartApp implements ExpenseApproval {
         }
     }
 }
+
+
